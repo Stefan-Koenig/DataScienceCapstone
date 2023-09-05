@@ -100,17 +100,19 @@ def get_scatterplot(entered_site,entered_payload):
             x='class', 
             y='PayloadMass', 
             color='BoosterVersion',
+            title='Sucess of Launches (total) in relation to Payload Mass (kg)'
         )
- kg) (n     to Payload Mass in relatio        return fig
+         return fig
     else:
-                filtered_df = filtered_df[filtered_df['LaunchSite'] == entered_site]
-        fig = px.pie(filtered_df, 
-            values='c
-            lass'scatter            x='class', 
-            y='PayloadMass',f
-            color='BoosterVersion', Launches at {}'.format(entered_site)
+        filtered_df = filtered_df[filtered_df['LaunchSite'] == entered_site]
+        fig = px.scatter(
+            filtered_df, 
+            x='class', 
+            y='PayloadMass',
+            color='BoosterVersion',
+            title='Sucess of Launches at {} in relation to Payload Mass (kg)'.format(entered_site)
         )
- in rela    tion to Payload Mass (kg)        return fig
+         return fig
 
 # Run the app
 if __name__ == '__main__':
