@@ -102,7 +102,7 @@ def get_scatterplot(entered_site,entered_payload):
             color='BoosterVersion',
             title='Sucess of Launches (total) in relation to Payload Mass (kg)'
         )
-         return fig
+        return fig
     else:
         filtered_df = filtered_df[filtered_df['LaunchSite'] == entered_site]
         fig = px.scatter(
@@ -112,7 +112,7 @@ def get_scatterplot(entered_site,entered_payload):
             color='BoosterVersion',
             title='Sucess of Launches at {} in relation to Payload Mass (kg)'.format(entered_site)
         )
-         return fig
+        return fig
 
 # Run the app
 if __name__ == '__main__':
