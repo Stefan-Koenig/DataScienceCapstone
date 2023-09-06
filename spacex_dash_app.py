@@ -69,15 +69,16 @@ def get_pie_chart(entered_site):
     if entered_site == 'ALL':
         fig = px.pie(filtered_df,
             values='class', 
-            names='Sucess', 
+            names='Launch Site', 
             title='Sucess of Launches(total)'
         )
         return fig
     else:
-        filtered_df = filtered_df[filtered_df['LaunchSite'] == entered_site]
+        filtered_df = filtered_df[filtered_df['Launch Site'] == entered_site]
+        filtered_df = filtered_df.groupby(['Launch Site', 'class']).size().reset_index(name='class_count')
         fig = px.pie(filtered_df, 
-            values='class', 
-            names='Sucess', 
+            values='class_count', 
+            names='class', 
             title='Sucess of Launches at {}'.format(entered_site)
         )
         return fig
@@ -97,19 +98,19 @@ def get_scatterplot(entered_site,entered_payload):
     if entered_site == 'ALL':
         fig = px.scatter(
             filtered_df,
-            x='class', 
-            y='PayloadMass', 
-            color='BoosterVersion',
+            x='Payload Mass (kg)', 
+            y='class', 
+            color='Booster Version Category',
             title='Sucess of Launches (total) in relation to Payload Mass (kg)'
         )
         return fig
     else:
-        filtered_df = filtered_df[filtered_df['LaunchSite'] == entered_site]
+        filtered_df = filtered_df[filtered_df['Launch Site'] == entered_site]
         fig = px.scatter(
             filtered_df, 
-            x='class', 
-            y='PayloadMass',
-            color='BoosterVersion',
+            x='Payload Mass (kg)', 
+            y='class',
+            color='Booster Version Category',
             title='Sucess of Launches at {} in relation to Payload Mass (kg)'.format(entered_site)
         )
         return fig
